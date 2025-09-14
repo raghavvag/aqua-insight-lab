@@ -1,21 +1,16 @@
 import { Button } from '@/components/ui/button';
-import OceanGlobe from './OceanGlobe';
+import Ocean3DScene from './Ocean3DScene';
 import FloatingBuoys from './FloatingBuoys';
 import { MessageCircle, ArrowRight } from 'lucide-react';
-import oceanWavesBg from '@/assets/ocean-waves-bg.jpg';
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ 
-          backgroundImage: `url(${oceanWavesBg})`,
-          filter: 'blur(1px)'
-        }}
-      />
-      <div className="absolute inset-0 bg-gradient-deep opacity-80" />
+      {/* 3D Ocean Background */}
+      <div className="absolute inset-0">
+        <Ocean3DScene />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background/60" />
       
       {/* Floating Buoys */}
       <FloatingBuoys />
@@ -63,9 +58,14 @@ const HeroSection = () => {
             </div>
           </div>
           
-          {/* Right Side - 3D Globe */}
+          {/* Right Side - Info Badge */}
           <div className="flex justify-center lg:justify-end">
-            <OceanGlobe />
+            <div className="bg-background/10 backdrop-blur-sm border border-accent/20 rounded-2xl p-6 max-w-sm">
+              <h3 className="text-lg font-semibold text-accent mb-2">Live Ocean Data</h3>
+              <p className="text-sm text-muted-foreground">
+                Connected to over 4,000 Argo floats worldwide, providing real-time temperature and salinity measurements.
+              </p>
+            </div>
           </div>
         </div>
         
